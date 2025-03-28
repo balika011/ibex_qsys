@@ -45,20 +45,7 @@ module ibex_integration
     input [11:0]                         dm_avalon_s_address,
     input [3:0]                          dm_avalon_s_byteenable,
     input                                dm_avalon_s_write,
-    input                                dm_avalon_s_read,
-
-    // Avalon slave for DBGREG
-    input [31:0]                         dbgreg_avalon_s_writedata,
-    output [31:0]                        dbgreg_avalon_s_readdata,
-    input [9:0]                          dbgreg_avalon_s_address,
-    input [3:0]                          dbgreg_avalon_s_byteenable,
-    input                                dbgreg_avalon_s_write,
-    input                                dbgreg_avalon_s_read,
-    input                                dbgreg_avalon_s_chipselect,
-    output                               dbgreg_avalon_s_readdatavalid,
-    output                               dbgreg_avalon_s_writeresponsevalid,
-    output [1:0]                         dbgreg_avalon_s_response,
-    output                               dbgreg_avalon_s_waitrequest_n
+    input                                dm_avalon_s_read
 );
 
 logic dm_debug_req;
@@ -250,29 +237,8 @@ dm_top #(
     .dmi_resp_o             (dmi_resp)
 );
 
-avalon_dbg_regif u_avalon_dbg_regif (
-    .clk_i(clk_i),
-    .rst_i(~rst_ni),
-    .avalon_s_writedata(dbgreg_avalon_s_writedata),
-    .avalon_s_readdata(dbgreg_avalon_s_readdata),
-    .avalon_s_address(dbgreg_avalon_s_address),
-    .avalon_s_byteenable(dbgreg_avalon_s_byteenable),
-    .avalon_s_write(dbgreg_avalon_s_write),
-    .avalon_s_read(dbgreg_avalon_s_read),
-    .avalon_s_chipselect(dbgreg_avalon_s_chipselect),
-    .avalon_s_readdatavalid(dbgreg_avalon_s_readdatavalid),
-    .avalon_s_writeresponsevalid(dbgreg_avalon_s_writeresponsevalid),
-    .avalon_s_response(dbgreg_avalon_s_response),
-    .avalon_s_waitrequest_n(dbgreg_avalon_s_waitrequest_n),
-    .dmi_req_ready_i(dmi_req_ready),
-    .dmi_req_o(dmi_req),
-    .dmi_req_valid_o(dmi_req_valid),
-    .dmi_resp_i(dmi_resp),
-    .dmi_resp_valid_i(dmi_resp_valid),
-    .dmi_resp_ready_o(dmi_resp_ready),
-    .debug_req(reg_debug_req),
-    .sleep_req(reg_sleep_req),
-    .dmi_rst_req(dmi_rst_req)
-);
+assign dmi_rst_req = 1'b1;
+assign dmi_req_valid = 1'b0;
+assign dmi_resp_ready = 1'b0;
 
 endmodule
