@@ -50,6 +50,16 @@ add_fileset_file dm_csrs.sv SYSTEM_VERILOG PATH riscv-dbg/src/dm_csrs.sv
 add_fileset_file dm_mem.sv SYSTEM_VERILOG PATH riscv-dbg/src/dm_mem.sv
 add_fileset_file dm_sba.sv SYSTEM_VERILOG PATH riscv-dbg/src/dm_sba.sv
 add_fileset_file dm_top.sv SYSTEM_VERILOG PATH riscv-dbg/src/dm_top.sv
+add_fileset_file dmi_intel.sv SYSTEM_VERILOG PATH rtl_extra/dmi_intel.sv
+add_fileset_file dmi_cdc.sv SYSTEM_VERILOG PATH riscv-dbg/src/dmi_cdc.sv
+add_fileset_file cdc_2phase_clearable.sv SYSTEM_VERILOG PATH rtl_extra/cdc_2phase_clearable.sv
+add_fileset_file sync.sv SYSTEM_VERILOG PATH rtl_extra/sync.sv
+add_fileset_file cdc_reset_ctrlr.sv SYSTEM_VERILOG PATH rtl_extra/cdc_reset_ctrlr.sv
+add_fileset_file cdc_reset_ctrlr_pkg.sv SYSTEM_VERILOG PATH rtl_extra/cdc_reset_ctrlr_pkg.sv
+add_fileset_file cdc_4phase.sv SYSTEM_VERILOG PATH rtl_extra/cdc_4phase.sv
+add_fileset_file spill_register.sv SYSTEM_VERILOG PATH rtl_extra/spill_register.sv
+add_fileset_file spill_register_flushable.sv SYSTEM_VERILOG PATH rtl_extra/spill_register_flushable.sv
+add_fileset_file dmi_intel_tap.sv SYSTEM_VERILOG PATH rtl_extra/dmi_intel_tap.sv
 
 add_fileset_file ibex_pkg.sv SYSTEM_VERILOG PATH ibex/rtl/ibex_pkg.sv
 
@@ -108,6 +118,16 @@ add_fileset_file dm_csrs.sv SYSTEM_VERILOG PATH riscv-dbg/src/dm_csrs.sv
 add_fileset_file dm_mem.sv SYSTEM_VERILOG PATH riscv-dbg/src/dm_mem.sv
 add_fileset_file dm_sba.sv SYSTEM_VERILOG PATH riscv-dbg/src/dm_sba.sv
 add_fileset_file dm_top.sv SYSTEM_VERILOG PATH riscv-dbg/src/dm_top.sv
+add_fileset_file dmi_intel.sv SYSTEM_VERILOG PATH rtl_extra/dmi_intel.sv
+add_fileset_file dmi_cdc.sv SYSTEM_VERILOG PATH riscv-dbg/src/dmi_cdc.sv
+add_fileset_file cdc_2phase_clearable.sv SYSTEM_VERILOG PATH rtl_extra/cdc_2phase_clearable.sv
+add_fileset_file sync.sv SYSTEM_VERILOG PATH rtl_extra/sync.sv
+add_fileset_file cdc_reset_ctrlr.sv SYSTEM_VERILOG PATH rtl_extra/cdc_reset_ctrlr.sv
+add_fileset_file cdc_reset_ctrlr_pkg.sv SYSTEM_VERILOG PATH rtl_extra/cdc_reset_ctrlr_pkg.sv
+add_fileset_file cdc_4phase.sv SYSTEM_VERILOG PATH rtl_extra/cdc_4phase.sv
+add_fileset_file spill_register.sv SYSTEM_VERILOG PATH rtl_extra/spill_register.sv
+add_fileset_file spill_register_flushable.sv SYSTEM_VERILOG PATH rtl_extra/spill_register_flushable.sv
+add_fileset_file dmi_intel_tap.sv SYSTEM_VERILOG PATH rtl_extra/dmi_intel_tap.sv
 
 add_fileset_file ibex_pkg.sv SYSTEM_VERILOG PATH ibex/rtl/ibex_pkg.sv
 
@@ -326,3 +346,72 @@ add_interface_port avalon_slave_dm dm_avalon_s_read read Input 1
 add_interface_port avalon_slave_dm dm_avalon_s_write write Input 1
 add_interface_port avalon_slave_dm dm_avalon_s_writedata writedata Input 32
 add_interface_port avalon_slave_dm dm_avalon_s_byteenable byteenable Input 4
+
+
+#
+# connection point avalon_master_data
+#
+add_interface avalon_master_bus_debug avalon start
+set_interface_property avalon_master_bus_debug addressUnits SYMBOLS
+set_interface_property avalon_master_bus_debug associatedClock clk_sink
+set_interface_property avalon_master_bus_debug associatedReset reset_sink
+set_interface_property avalon_master_bus_debug bitsPerSymbol 8
+set_interface_property avalon_master_bus_debug burstOnBurstBoundariesOnly false
+set_interface_property avalon_master_bus_debug burstcountUnits WORDS
+set_interface_property avalon_master_bus_debug doStreamReads false
+set_interface_property avalon_master_bus_debug doStreamWrites false
+set_interface_property avalon_master_bus_debug holdTime 0
+set_interface_property avalon_master_bus_debug linewrapBursts false
+set_interface_property avalon_master_bus_debug maximumPendingReadTransactions 0
+set_interface_property avalon_master_bus_debug maximumPendingWriteTransactions 0
+set_interface_property avalon_master_bus_debug readLatency 0
+set_interface_property avalon_master_bus_debug readWaitTime 1
+set_interface_property avalon_master_bus_debug setupTime 0
+set_interface_property avalon_master_bus_debug timingUnits Cycles
+set_interface_property avalon_master_bus_debug writeWaitTime 0
+set_interface_property avalon_master_bus_debug ENABLED true
+set_interface_property avalon_master_bus_debug EXPORT_OF ""
+set_interface_property avalon_master_bus_debug PORT_NAME_MAP ""
+set_interface_property avalon_master_bus_debug CMSIS_SVD_VARIABLES ""
+set_interface_property avalon_master_bus_debug SVD_ADDRESS_GROUP ""
+add_interface_port avalon_master_bus_debug bus_debug_addr address Output 32
+add_interface_port avalon_master_bus_debug bus_debug_rdata readdata Input 32
+add_interface_port avalon_master_bus_debug bus_debug_read read Output 1
+add_interface_port avalon_master_bus_debug bus_debug_rvalid readdatavalid Input 1
+add_interface_port avalon_master_bus_debug bus_debug_busy waitrequest Input 1
+add_interface_port avalon_master_bus_debug bus_debug_write write Output 1
+add_interface_port avalon_master_bus_debug bus_debug_be byteenable Output 4
+add_interface_port avalon_master_bus_debug bus_debug_wdata writedata Output 32
+add_interface_port avalon_master_bus_debug bus_debug_resp response Input 2
+add_interface_port avalon_master_bus_debug bus_debug_wrespvalid writeresponsevalid Input 1
+
+
+# 
+# connection point tck
+# 
+add_interface tck clock end
+set_interface_property tck ENABLED true
+set_interface_property tck EXPORT_OF ""
+set_interface_property tck PORT_NAME_MAP ""
+set_interface_property tck CMSIS_SVD_VARIABLES ""
+set_interface_property tck SVD_ADDRESS_GROUP ""
+
+add_interface_port tck tck_i clk Input 1
+
+
+# 
+# connection point jtag
+# 
+add_interface jtag conduit end
+set_interface_property jtag associatedClock tck
+set_interface_property jtag associatedReset ""
+set_interface_property jtag ENABLED true
+set_interface_property jtag EXPORT_OF ""
+set_interface_property jtag PORT_NAME_MAP ""
+set_interface_property jtag CMSIS_SVD_VARIABLES ""
+set_interface_property jtag SVD_ADDRESS_GROUP ""
+
+add_interface_port jtag tdi_i tdi Input 1
+add_interface_port jtag tms_i tms Input 1
+add_interface_port jtag tdo_o tdo Output 1
+add_interface_port jtag trstn_i trstn Input 1
