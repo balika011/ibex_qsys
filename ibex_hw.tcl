@@ -51,14 +51,9 @@ add_fileset_file dm_mem.sv SYSTEM_VERILOG PATH riscv-dbg/src/dm_mem.sv
 add_fileset_file dm_sba.sv SYSTEM_VERILOG PATH riscv-dbg/src/dm_sba.sv
 add_fileset_file dm_top.sv SYSTEM_VERILOG PATH riscv-dbg/src/dm_top.sv
 add_fileset_file dmi_intel.sv SYSTEM_VERILOG PATH rtl_extra/dmi_intel.sv
-add_fileset_file dmi_cdc.sv SYSTEM_VERILOG PATH riscv-dbg/src/dmi_cdc.sv
-add_fileset_file cdc_2phase_clearable.sv SYSTEM_VERILOG PATH rtl_extra/cdc_2phase_clearable.sv
-add_fileset_file sync.sv SYSTEM_VERILOG PATH rtl_extra/sync.sv
-add_fileset_file cdc_reset_ctrlr.sv SYSTEM_VERILOG PATH rtl_extra/cdc_reset_ctrlr.sv
-add_fileset_file cdc_reset_ctrlr_pkg.sv SYSTEM_VERILOG PATH rtl_extra/cdc_reset_ctrlr_pkg.sv
-add_fileset_file cdc_4phase.sv SYSTEM_VERILOG PATH rtl_extra/cdc_4phase.sv
-add_fileset_file spill_register.sv SYSTEM_VERILOG PATH rtl_extra/spill_register.sv
-add_fileset_file spill_register_flushable.sv SYSTEM_VERILOG PATH rtl_extra/spill_register_flushable.sv
+add_fileset_file altera_avalon_st_clock_crosser.v SYSTEM_VERILOG PATH rtl_extra/altera_avalon_st_clock_crosser.v
+add_fileset_file altera_avalon_st_pipeline_base.v SYSTEM_VERILOG PATH rtl_extra/altera_avalon_st_pipeline_base.v
+add_fileset_file altera_std_synchronizer_nocut.v SYSTEM_VERILOG PATH rtl_extra/altera_std_synchronizer_nocut.v
 add_fileset_file dmi_intel_tap.sv SYSTEM_VERILOG PATH rtl_extra/dmi_intel_tap.sv
 
 add_fileset_file ibex_pkg.sv SYSTEM_VERILOG PATH ibex/rtl/ibex_pkg.sv
@@ -119,14 +114,9 @@ add_fileset_file dm_mem.sv SYSTEM_VERILOG PATH riscv-dbg/src/dm_mem.sv
 add_fileset_file dm_sba.sv SYSTEM_VERILOG PATH riscv-dbg/src/dm_sba.sv
 add_fileset_file dm_top.sv SYSTEM_VERILOG PATH riscv-dbg/src/dm_top.sv
 add_fileset_file dmi_intel.sv SYSTEM_VERILOG PATH rtl_extra/dmi_intel.sv
-add_fileset_file dmi_cdc.sv SYSTEM_VERILOG PATH riscv-dbg/src/dmi_cdc.sv
-add_fileset_file cdc_2phase_clearable.sv SYSTEM_VERILOG PATH rtl_extra/cdc_2phase_clearable.sv
-add_fileset_file sync.sv SYSTEM_VERILOG PATH rtl_extra/sync.sv
-add_fileset_file cdc_reset_ctrlr.sv SYSTEM_VERILOG PATH rtl_extra/cdc_reset_ctrlr.sv
-add_fileset_file cdc_reset_ctrlr_pkg.sv SYSTEM_VERILOG PATH rtl_extra/cdc_reset_ctrlr_pkg.sv
-add_fileset_file cdc_4phase.sv SYSTEM_VERILOG PATH rtl_extra/cdc_4phase.sv
-add_fileset_file spill_register.sv SYSTEM_VERILOG PATH rtl_extra/spill_register.sv
-add_fileset_file spill_register_flushable.sv SYSTEM_VERILOG PATH rtl_extra/spill_register_flushable.sv
+add_fileset_file altera_avalon_st_clock_crosser.v SYSTEM_VERILOG PATH rtl_extra/altera_avalon_st_clock_crosser.v
+add_fileset_file altera_avalon_st_pipeline_base.v SYSTEM_VERILOG PATH rtl_extra/altera_avalon_st_pipeline_base.v
+add_fileset_file altera_std_synchronizer_nocut.v SYSTEM_VERILOG PATH rtl_extra/altera_std_synchronizer_nocut.v
 add_fileset_file dmi_intel_tap.sv SYSTEM_VERILOG PATH rtl_extra/dmi_intel_tap.sv
 
 add_fileset_file ibex_pkg.sv SYSTEM_VERILOG PATH ibex/rtl/ibex_pkg.sv

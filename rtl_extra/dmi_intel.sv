@@ -274,26 +274,30 @@ module dmi_intel (
   // ---------
   // CDC
   // ---------
-  dmi_cdc i_dmi_cdc (
-    // JTAG side (master side)
-    .tck_i                ( tck_i            ),
-    .trst_ni              ( 1'b1             ),
-    .jtag_dmi_cdc_clear_i ( dmi_clear        ),
-    .jtag_dmi_req_i       ( dmi_req          ),
-    .jtag_dmi_ready_o     ( dmi_req_ready    ),
-    .jtag_dmi_valid_i     ( dmi_req_valid    ),
-    .jtag_dmi_resp_o      ( dmi_resp         ),
-    .jtag_dmi_valid_o     ( dmi_resp_valid   ),
-    .jtag_dmi_ready_i     ( dmi_resp_ready   ),
-    // core side
-    .clk_i                ( clk_i            ),
-    .rst_ni	              ( rst_ni           ),
-    .core_dmi_req_o       ( dmi_req_o        ),
-    .core_dmi_valid_o     ( dmi_req_valid_o  ),
-    .core_dmi_ready_i     ( dmi_req_ready_i  ),
-    .core_dmi_resp_i      ( dmi_resp_i       ),
-    .core_dmi_ready_o     ( dmi_resp_ready_o ),
-    .core_dmi_valid_i     ( dmi_resp_valid_i )
+  altera_avalon_st_clock_crosser #(.BITS_PER_SYMBOL($bits(dm::dmi_req_t))) i_cdc_req (
+    .in_clk(tck_i),
+    .in_reset(dmi_clear),
+    .in_ready(dmi_req_ready),
+    .in_valid(dmi_req_valid),
+    .in_data(dmi_req),
+    .out_clk(clk_i),
+    .out_reset(~rst_ni),
+    .out_ready(dmi_req_ready_i),
+    .out_valid(dmi_req_valid_o),
+    .out_data(dmi_req_o)
+  );
+
+  altera_avalon_st_clock_crosser #(.BITS_PER_SYMBOL($bits(dm::dmi_resp_t))) i_cdc_resp (
+    .in_clk(clk_i),
+    .in_reset(~rst_ni),
+    .in_ready(dmi_resp_ready_o),
+    .in_valid(dmi_resp_valid_i),
+    .in_data(dmi_resp_i),
+    .out_clk(tck_i),
+    .out_reset(dmi_clear),
+    .out_ready(dmi_resp_ready),
+    .out_valid(dmi_resp_valid),
+    .out_data(dmi_resp)
   );
 
 endmodule

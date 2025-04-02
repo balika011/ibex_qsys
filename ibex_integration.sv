@@ -137,6 +137,20 @@ assign debug_rdata = bus_debug_rdata;
 assign debug_err = '0;
 assign debug_other_err = '0;
 
+// Delay instruction fetching, just to make sure all hardware ready for action
+logic [31:0]	fetch_counter;
+logic			fetch_count_reached;
+assign			fetch_count_reached = (fetch_counter == 2700); // 2700 / 27000000 = 0,0001sec = 0.1ms = 100us
+
+always @(posedge clk_i or negedge rst_ni) begin
+
+    if (!rst_ni)
+        fetch_counter <= '0;
+    else if (!fetch_count_reached) begin
+        fetch_counter <= fetch_counter + 1'b1;
+    end
+end
+
 ibex_top #(
 	.PMPEnable				(0),
 	.PMPGranularity			(0),
@@ -152,7 +166,7 @@ ibex_top #(
 	.RegFile				(ibex_pkg::RegFileFF),
 	//.BranchTargetALU
 	//.WritebackStage
-	.ICache					(1),
+	.ICache					(0),
 	.ICacheECC				(0),
 	.ICacheScramble			(0),
 	//.ICacheScrNumPrinceRoundsHalf
@@ -219,7 +233,7 @@ ibex_top #(
 	.double_fault_seen_o	(),
 
 	// Special control signals
-	.fetch_enable_i			(IbexMuBiOn),
+	.fetch_enable_i			(fetch_count_reached ? IbexMuBiOn : IbexMuBiOff),
 	.alert_minor_o			(),
 	.alert_major_internal_o	(),
 	.alert_major_bus_o		(),
