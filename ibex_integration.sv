@@ -143,7 +143,6 @@ logic			fetch_count_reached;
 assign			fetch_count_reached = (fetch_counter == 2700); // 2700 / 27000000 = 0,0001sec = 0.1ms = 100us
 
 always @(posedge clk_i or negedge rst_ni) begin
-
     if (!rst_ni)
         fetch_counter <= '0;
     else if (!fetch_count_reached) begin
