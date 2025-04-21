@@ -140,7 +140,7 @@ assign debug_other_err = '0;
 // Delay instruction fetching, just to make sure all hardware ready for action
 logic [31:0]	fetch_counter;
 logic			fetch_count_reached;
-assign			fetch_count_reached = (fetch_counter == 2700); // 2700 / 27000000 = 0,0001sec = 0.1ms = 100us
+assign			fetch_count_reached = (fetch_counter == 5400); // 5400 / 54000000 = 0,0001sec = 0.1ms = 100us
 
 always @(posedge clk_i or negedge rst_ni) begin
     if (!rst_ni)
