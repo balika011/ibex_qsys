@@ -219,20 +219,88 @@ add_interface_port config core_sleep_o core_sleep_o Output 1
 
 
 #
-# connection point interrupt_receiver
+# connection point software_irq
 #
-add_interface interrupt_receiver interrupt start
-set_interface_property interrupt_receiver associatedAddressablePoint ""
-set_interface_property interrupt_receiver associatedClock clk_sink
-set_interface_property interrupt_receiver associatedReset reset_sink
-set_interface_property interrupt_receiver irqScheme INDIVIDUAL_REQUESTS
-set_interface_property interrupt_receiver ENABLED true
-set_interface_property interrupt_receiver EXPORT_OF ""
-set_interface_property interrupt_receiver PORT_NAME_MAP ""
-set_interface_property interrupt_receiver CMSIS_SVD_VARIABLES ""
-set_interface_property interrupt_receiver SVD_ADDRESS_GROUP ""
+add_interface software_irq interrupt start
+set_interface_property software_irq associatedAddressablePoint ""
+set_interface_property software_irq associatedClock clk_sink
+set_interface_property software_irq associatedReset reset_sink
+set_interface_property software_irq irqScheme INDIVIDUAL_REQUESTS
+set_interface_property software_irq ENABLED true
+set_interface_property software_irq EXPORT_OF ""
+set_interface_property software_irq PORT_NAME_MAP ""
+set_interface_property software_irq CMSIS_SVD_VARIABLES ""
+set_interface_property software_irq SVD_ADDRESS_GROUP ""
 
-add_interface_port interrupt_receiver irq_fast_i irq Input 15
+add_interface_port software_irq irq_software_i irq Input 1
+
+
+#
+# connection point timer_irq
+#
+add_interface timer_irq interrupt start
+set_interface_property timer_irq associatedAddressablePoint ""
+set_interface_property timer_irq associatedClock clk_sink
+set_interface_property timer_irq associatedReset reset_sink
+set_interface_property timer_irq irqScheme INDIVIDUAL_REQUESTS
+set_interface_property timer_irq ENABLED true
+set_interface_property timer_irq EXPORT_OF ""
+set_interface_property timer_irq PORT_NAME_MAP ""
+set_interface_property timer_irq CMSIS_SVD_VARIABLES ""
+set_interface_property timer_irq SVD_ADDRESS_GROUP ""
+
+add_interface_port timer_irq irq_timer_i irq Input 1
+
+
+#
+# connection point external_irq
+#
+add_interface external_irq interrupt start
+set_interface_property external_irq associatedAddressablePoint ""
+set_interface_property external_irq associatedClock clk_sink
+set_interface_property external_irq associatedReset reset_sink
+set_interface_property external_irq irqScheme INDIVIDUAL_REQUESTS
+set_interface_property external_irq ENABLED true
+set_interface_property external_irq EXPORT_OF ""
+set_interface_property external_irq PORT_NAME_MAP ""
+set_interface_property external_irq CMSIS_SVD_VARIABLES ""
+set_interface_property external_irq SVD_ADDRESS_GROUP ""
+
+add_interface_port external_irq irq_external_i irq Input 1
+
+
+#
+# connection point fast_irq
+#
+add_interface fast_irq interrupt start
+set_interface_property fast_irq associatedAddressablePoint ""
+set_interface_property fast_irq associatedClock clk_sink
+set_interface_property fast_irq associatedReset reset_sink
+set_interface_property fast_irq irqScheme INDIVIDUAL_REQUESTS
+set_interface_property fast_irq ENABLED true
+set_interface_property fast_irq EXPORT_OF ""
+set_interface_property fast_irq PORT_NAME_MAP ""
+set_interface_property fast_irq CMSIS_SVD_VARIABLES ""
+set_interface_property fast_irq SVD_ADDRESS_GROUP ""
+
+add_interface_port fast_irq irq_fast_i irq Input 15
+
+
+#
+# connection point not_maskable_irq
+#
+add_interface not_maskable_irq interrupt start
+set_interface_property not_maskable_irq associatedAddressablePoint ""
+set_interface_property not_maskable_irq associatedClock clk_sink
+set_interface_property not_maskable_irq associatedReset reset_sink
+set_interface_property not_maskable_irq irqScheme INDIVIDUAL_REQUESTS
+set_interface_property not_maskable_irq ENABLED true
+set_interface_property not_maskable_irq EXPORT_OF ""
+set_interface_property not_maskable_irq PORT_NAME_MAP ""
+set_interface_property not_maskable_irq CMSIS_SVD_VARIABLES ""
+set_interface_property not_maskable_irq SVD_ADDRESS_GROUP ""
+
+add_interface_port not_maskable_irq irq_nm_i irq Input 1
 
 
 #

@@ -41,11 +41,11 @@ module ibex_integration
 	input logic				bus_debug_wrespvalid,
 
 	// Interrupt inputs
-	//input logic			irq_software_i,
-	//input logic			irq_timer_i,
-	//input logic			irq_external_i,
+	input logic				irq_software_i,
+	input logic				irq_timer_i,
+	input logic				irq_external_i,
 	input logic [14:0]		irq_fast_i,
-	//input logic			irq_nm_i,
+	input logic				irq_nm_i,
 
 	// CPU Control Signals
 	//input ibex_mubi_t		fetch_enable_i,
@@ -215,11 +215,11 @@ ibex_top #(
 	.data_err_i				(core_data_err),
 
 	// Interrupt inputs
-	.irq_software_i			('0),
-	.irq_timer_i			('0),
-	.irq_external_i			('0),
+	.irq_software_i			(irq_software_i),
+	.irq_timer_i			(irq_timer_i),
+	.irq_external_i			(irq_external_i),
 	.irq_fast_i				(irq_fast_i),
-	.irq_nm_i				('0),
+	.irq_nm_i				(irq_nm_i),
 
 	// Scrambling Interface
 	.scramble_key_valid_i	('0),
